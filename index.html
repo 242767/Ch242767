@@ -1,0 +1,796 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style><script>
+  window.va = window.va || function () {
+    (window.vaq = window.vaq || []).push(arguments);
+  };
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="theme-color" content="#150d22">
+<title>242767</title>
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+</head><body>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=DM+Mono:wght@400&display=swap">
+<style>
+/* Layout: a night-sky observatory. A hub of small stations (real moon of today, a moon-phase quiz, a star-catching game); a last quiet letter unlocks after two stations. Pink is the one warm accent. Single dark look by choice. */
+:root{
+  --night:#150d22;
+  --night-2:#2a1740;
+  --card:#1c1230;
+  --ink:#f2eaf3;
+  --ink-soft:#bdaecb;
+  --moon:#f3ecd6;
+  --pink:#e57fb8;
+  --line:rgba(242,225,246,.16);
+  --display:"Instrument Serif","Times New Roman",serif;
+  --body:"Newsreader",Georgia,serif;
+  --mono:"DM Mono",ui-monospace,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{background:var(--night)}
+body{margin:0;min-height:100vh;min-height:100dvh;background:var(--night);color:var(--ink);font-family:var(--body);font-size:1.12rem;line-height:1.7;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;background:radial-gradient(70% 38% at 50% 108%,rgba(190,80,160,.2),transparent 70%),radial-gradient(110% 70% at 50% 0%,var(--night-2),var(--night) 62%);z-index:-2}
+#sky{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none}
+.app{max-width:36rem;margin:0 auto;padding-block:26px 56px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:26px}
+.view{animation:in .6s ease both}
+@keyframes in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.06;text-wrap:balance;margin:0 0 1rem}
+h1{font-size:clamp(3.4rem,15vw,5.6rem);font-style:italic;letter-spacing:.02em}
+h2{font-size:clamp(2rem,8vw,2.7rem)}
+h3{font-size:1.6rem}
+p{margin:0 0 1.1rem}
+.lead{color:var(--ink-soft);font-style:italic;font-size:1.18rem}
+.eyebrow{font-family:var(--mono);font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--pink);margin:0 0 .7rem}
+.small{font-size:.92rem;color:var(--ink-soft)}
+.btn{font-family:var(--mono);font-size:.8rem;letter-spacing:.06em;min-height:46px;padding:11px 18px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer;transition:border-color .2s,background .2s}
+.btn:hover{border-color:var(--ink-soft)}
+.btn:focus-visible,.card:focus-visible,.opt:focus-visible{outline:2px solid var(--moon);outline-offset:3px}
+.btn.main{background:var(--moon);color:#24122f;border-color:var(--moon)}
+.btn.quiet{border-color:transparent;color:var(--ink-soft);padding-inline:6px}
+.row{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.2rem}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:14px;margin-top:1.6rem}
+.card{position:relative;text-align:left;font:inherit;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px 18px 18px;cursor:pointer;display:flex;flex-direction:column;gap:6px;min-width:0;transition:border-color .2s,transform .2s}
+.card:hover:not([disabled]){border-color:var(--ink-soft);transform:translateY(-2px)}
+.card .tag{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
+.card .ttl{font-family:var(--display);font-size:1.7rem;line-height:1.1}
+.card .sub{font-size:.98rem;color:var(--ink-soft);line-height:1.5}
+.card.seen::after{content:"";position:absolute;top:16px;right:16px;width:8px;height:8px;border-radius:50%;background:var(--pink);box-shadow:0 0 10px var(--pink)}
+.card[disabled]{opacity:.5;cursor:default;border-style:dashed}
+.moonbox{display:flex;flex-wrap:wrap;gap:22px;align-items:center;margin:1.2rem 0}
+.moonbox svg{width:150px;height:150px;flex:none;filter:drop-shadow(0 0 24px rgba(243,236,214,.3))}
+.stat{font-family:var(--mono);font-size:.82rem;letter-spacing:.06em;color:var(--ink-soft);line-height:1.9}
+.stat b{color:var(--moon);font-weight:400;font-size:1rem}
+.fact{min-height:4.6em;padding:14px 16px;border-left:2px solid var(--pink);background:rgba(229,127,184,.06);border-radius:0 12px 12px 0}
+.opts{display:grid;gap:10px;margin-top:1rem}
+.opt{font:inherit;font-size:1.04rem;text-align:left;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;cursor:pointer;min-height:52px;transition:border-color .2s,background .2s}
+.opt:hover{border-color:var(--ink-soft)}
+.bar{height:2px;background:var(--line);border-radius:2px;overflow:hidden;margin:0 0 1.2rem}
+.bar i{display:block;height:100%;width:0;background:var(--pink);transition:width .4s}
+.result{display:flex;flex-wrap:wrap;gap:22px;align-items:center}
+.result svg{width:130px;height:130px;flex:none;filter:drop-shadow(0 0 22px rgba(243,236,214,.3))}
+.result > div{flex:1;min-width:14rem}
+#gwrap{position:relative;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:rgba(30,19,50,.6);touch-action:pan-y}
+#g{display:block;width:100%;height:380px}
+.hud{display:flex;justify-content:space-between;font-family:var(--mono);font-size:.8rem;letter-spacing:.08em;color:var(--ink-soft);margin:0 0 .7rem}
+.hud b{color:var(--moon);font-weight:400}
+.wish{position:fixed;left:-10vw;top:12vh;width:140px;height:2px;background:linear-gradient(90deg,transparent,#fff);border-radius:2px;opacity:0;pointer-events:none;box-shadow:0 0 12px #fff;z-index:5}
+.wish.go{animation:shoot 1.5s ease-out forwards}
+@keyframes shoot{0%{opacity:1;transform:translate(0,0) rotate(24deg)}100%{opacity:0;transform:translate(120vw,55vh) rotate(24deg)}}
+.pull{font-family:var(--display);font-style:italic;font-size:clamp(1.5rem,6vw,1.95rem);line-height:1.25;color:var(--moon);border-left:2px solid var(--pink);padding-left:1rem;margin:1.5rem 0}
+.smile{display:block;width:min(220px,65%);margin:1rem 0}
+.smile path{stroke:var(--pink);stroke-width:3;fill:none;stroke-linecap:round;stroke-dasharray:260;stroke-dashoffset:260;animation:draw 2.4s .3s ease forwards;filter:drop-shadow(0 0 6px var(--pink))}
+@keyframes draw{to{stroke-dashoffset:0}}
+.sign{font-family:var(--display);font-style:italic;font-size:1.6rem;color:var(--moon)}
+.datebox{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:1.2rem 0 .4rem}
+.datebox label{flex-basis:100%}
+.datebox input{font:inherit;font-size:1.05rem;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 14px;min-height:46px;color-scheme:dark}
+.datebox input:focus-visible{outline:2px solid var(--moon);outline-offset:3px}
+.top{flex-wrap:wrap}
+.nm{font:inherit;color:inherit;letter-spacing:inherit;text-transform:inherit;background:none;border:0;padding:0;cursor:pointer;border-bottom:1px dotted transparent}
+.nm:hover{border-bottom-color:var(--pink)}
+.nm:focus-visible{outline:2px solid var(--moon);outline-offset:4px}
+.hubmoon svg{width:64px;height:64px;display:block;margin-bottom:16px;filter:drop-shadow(0 0 18px rgba(243,236,214,.35))}
+#gwrap:not(.run)::after{content:"Tayyor bo‘lsang, boshlash tugmasini bos";position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:0 24px;color:var(--ink-soft);font-style:italic;pointer-events:none}
+.mini{min-height:34px;padding:4px 10px;font-size:.7rem;letter-spacing:.1em}
+.mini[aria-pressed="true"]{color:var(--moon);border-color:var(--line)}
+.cwrap{position:relative;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:rgba(30,19,50,.6);touch-action:pan-y}
+#sc{display:block;width:100%;height:380px}
+.wishbox{display:flex;flex-wrap:wrap;gap:10px;margin:1rem 0}
+.wishbox input{flex:1;min-width:12rem;font:inherit;font-size:1.05rem;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 14px;min-height:46px}
+.wishbox input:focus-visible{outline:2px solid var(--moon);outline-offset:3px}
+#wsky{position:relative;height:320px;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:rgba(30,19,50,.6)}
+.ws{position:absolute;width:34px;height:34px;margin:-17px 0 0 -17px;border:0;background:transparent;cursor:pointer;padding:0;animation:rise 2.2s ease-out both}
+.ws::before{content:"";position:absolute;left:50%;top:50%;width:8px;height:8px;margin:-4px;border-radius:50%;background:var(--moon);box-shadow:0 0 12px 3px rgba(243,236,214,.6);animation:tw 3s ease-in-out infinite}
+.ws.pk::before{background:var(--pink);box-shadow:0 0 12px 3px rgba(229,127,184,.7)}
+.ws:focus-visible{outline:2px solid var(--moon);border-radius:50%}
+@keyframes rise{from{opacity:0;transform:translateY(260px)}to{opacity:1;transform:none}}
+@keyframes tw{50%{opacity:.45}}
+@media (prefers-reduced-motion:reduce){.ws,.ws::before{animation:none}}
+[hidden]{display:none!important}
+@media (prefers-reduced-motion:reduce){.view{animation:none}.smile path{animation:none;stroke-dashoffset:0}.wish.go{animation:none}.bar i{transition:none}}
+/* ---- Qo‘shimchalar ---- */
+body{background:transparent}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+/* ---- Gullagan daraxt ---- */
+:root{--bloom:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-50 -50 100 100'%3E%3Cg fill='%23e57fb8'%3E%3Cellipse cy='-26' rx='15' ry='24'/%3E%3Cellipse cy='-26' rx='15' ry='24' transform='rotate(72)'/%3E%3Cellipse cy='-26' rx='15' ry='24' transform='rotate(144)'/%3E%3Cellipse cy='-26' rx='15' ry='24' transform='rotate(216)'/%3E%3Cellipse cy='-26' rx='15' ry='24' transform='rotate(288)'/%3E%3C/g%3E%3Ccircle r='7' fill='%23f3ecd6'/%3E%3C/svg%3E")}
+#bough{position:fixed;left:0;top:0;width:100%;height:42vh;z-index:-1;pointer-events:none;opacity:.5;transform-origin:50% 0;animation:sway 11s ease-in-out infinite alternate;-webkit-mask-image:linear-gradient(#000 58%,transparent);mask-image:linear-gradient(#000 58%,transparent);transition:opacity 3s ease}
+body.letter-on #bough{opacity:.6}
+@keyframes sway{from{transform:rotate(-.35deg)}to{transform:rotate(.35deg)}}
+.app{text-shadow:0 0 8px rgba(21,13,34,.9)}
+.card{overflow:hidden}
+.card::before{content:"";position:absolute;right:-14px;bottom:-14px;width:72px;height:72px;background:var(--bloom) center/contain no-repeat;opacity:.2;pointer-events:none;transition:opacity .3s,transform .6s}
+.card:hover:not([disabled])::before{opacity:.38;transform:rotate(20deg)}
+.card[disabled]::before{opacity:.08}
+@media (prefers-reduced-motion:reduce){#bough{animation:none;transition:none}}
+#gBest.rec::after{content:" ★";display:inline-block;color:var(--pink);text-shadow:0 0 10px var(--pink);animation:pop .9s ease both}
+@keyframes pop{from{transform:scale(.2);opacity:0}60%{transform:scale(1.35)}to{transform:none;opacity:1}}
+.calh{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);margin:1.1rem 0 .5rem}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin:0 0 1.2rem}
+.cal div{text-align:center;font-family:var(--mono);font-size:.72rem;color:var(--ink-soft);min-width:0}
+.cal svg{display:block;width:100%;max-width:40px;height:auto;margin:0 auto 5px}
+.cal .today{color:var(--moon)}
+.cal .today svg{filter:drop-shadow(0 0 8px rgba(243,236,214,.55))}
+#sc:focus-visible{outline:2px solid var(--moon);outline-offset:-4px;border-radius:18px}
+.shoot{position:fixed;left:0;top:0;width:44px;height:44px;margin:-22px 0 0 -22px;padding:0;border:0;background:transparent;cursor:pointer;z-index:6;animation:fly 4.8s linear forwards}
+.shoot::before{content:"";position:absolute;left:50%;top:50%;width:6px;height:6px;margin:-3px;border-radius:50%;background:#fff;box-shadow:0 0 12px 3px rgba(255,255,255,.7)}
+.shoot::after{content:"";position:absolute;right:50%;top:50%;width:110px;height:2px;margin-top:-1px;transform-origin:100% 50%;transform:rotate(var(--a));background:linear-gradient(90deg,transparent,rgba(255,255,255,.9));border-radius:2px}
+@keyframes fly{0%{opacity:0;transform:translate(var(--x0),var(--y0))}8%{opacity:1}92%{opacity:1}100%{opacity:0;transform:translate(var(--x1),var(--y1))}}
+.sp{position:fixed;width:4px;height:4px;margin:-2px 0 0 -2px;border-radius:50%;background:#fff;pointer-events:none;z-index:7;animation:spk .7s ease-out forwards}
+@keyframes spk{to{transform:translate(var(--dx),var(--dy));opacity:0}}
+#sky{transition:opacity 3s ease}
+body.letter-on #sky{opacity:.5}
+#bigMoon{position:fixed;left:50%;top:10vh;width:min(72vw,300px);z-index:-1;pointer-events:none;opacity:0;transform:translateX(-50%) scale(.3);transition:opacity 4.5s ease,transform 6s cubic-bezier(.2,.7,.2,1)}
+body.letter-on #bigMoon{opacity:.13;transform:translateX(-50%) scale(1)}
+#bigMoon svg{display:block;width:100%;height:auto;filter:drop-shadow(0 0 40px rgba(243,236,214,.3))}
+.rv{opacity:0;transform:translateY(10px);transition:opacity 1.4s ease,transform 1.4s ease}
+.rv.in{opacity:1;transform:none}
+.rv.pull{border-left-color:transparent;position:relative}
+.rv.pull::before{content:"";position:absolute;left:-2px;top:0;bottom:0;width:2px;background:var(--pink);transform:scaleY(0);transform-origin:top;transition:transform 1.6s ease .6s}
+.rv.pull.in::before{transform:scaleY(1)}
+@media (prefers-reduced-motion:reduce){.rv,.rv.pull::before,#bigMoon,#sky{transition:none}.shoot,.sp{display:none}#gBest.rec::after{animation:none}}
+/* ---- Xotira sahifalari ---- */
+[data-v="story"] h3{margin-top:2.6rem;font-size:clamp(1.8rem,7vw,2.3rem)}
+[data-v="story"] h3.first{margin-top:.6rem}
+[data-v="story"] p{text-indent:1.4em;margin-bottom:.9rem}
+[data-v="story"] p.noind{text-indent:0}
+.sep{display:block;width:44px;height:2px;margin:2.4rem auto 0;border:0;background:var(--pink);box-shadow:0 0 10px var(--pink);border-radius:2px}
+</style>
+
+<canvas id="sky" aria-hidden="true"></canvas>
+<div class="wish" id="wish" aria-hidden="true"></div>
+<div id="bigMoon" aria-hidden="true"></div>
+<canvas id="bough" aria-hidden="true"></canvas>
+
+<div class="app">
+  <div class="top"><button class="nm" type="button">242767</button><button class="btn quiet mini" id="musicBtn" aria-pressed="false">Musiqa: o‘chiq</button><span id="crumb">💫</span></div>
+
+  <!-- HUB -->
+  <section class="view" data-v="hub">
+    <div class="hubmoon" id="hubMoon" aria-hidden="true"></div>
+    <p class="eyebrow" id="hubEyebrow">sirli taklif</p>
+    <h1><button class="nm" type="button">242767</button></h1>
+    <p class="small" id="nmHint" style="margin-top:-.4rem">Sirli ismga bosib ko‘r.</p>
+    <p class="lead">Bu  siz uchun: oy, o‘yinlar, yulduzlar va biroz sir. Savollar faqat qiziqish uchun. To‘g‘ri yoki noto‘g‘ri javob yo‘q, hech narsa yuborilmaydi.</p>
+    <div class="cards">
+      <button class="card" data-go="moon"><span class="tag">kuzatuv</span><span class="ttl">Bugungi oy</span><span class="sub">Hozir osmonda oy qanday ko‘rinadi? Hisoblab ko‘rsatamiz. Orzu ham qilsa bo‘ladi.</span></button>
+      <button class="card" data-go="quiz"><span class="tag">kichik test</span><span class="ttl">Sen qaysi oy fazasisan?</span><span class="sub">To‘rtta tez savol. Natija hazil va yoqimli.</span></button>
+      <button class="card" data-go="game"><span class="tag">o‘yin</span><span class="ttl">Yulduz tutish</span><span class="sub">30 soniya. Yulduzlarni bos, pushti yulduz uch ochko beradi.</span></button>
+      <button class="card" data-go="star"><span class="tag">jumboq</span><span class="ttl">Yulduz turkumini chiz</span><span class="sub">Yulduzlarni tartib bilan ulab, osmondagi haqiqiy turkumlarni och.</span></button>
+      <button class="card" data-go="wishes"><span class="tag">sokin joy</span><span class="ttl">Orzular osmoni</span><span class="sub">Orzu yoz, u yulduzga aylanib osmonga chiqadi. Hech qayerga yuborilmaydi.</span></button>
+      <button class="card" data-go="birth"><span class="tag">shaxsiy</span><span class="ttl">Tug‘ilgan kuningdagi oy</span><span class="sub">Sanani o‘zing kiritasan. O‘sha kuni osmonda oy qanday bo‘lganini ko‘rasan.</span></button>
+      <button class="card" data-go="story"><span class="tag">xotira</span><span class="ttl">Xotira sahifalari</span><span class="sub">Ikki qisqa sahifa: «Xotira» va «Oyga qarab». Sekin o‘qiladigan joy.</span></button>
+      <button class="card" id="letterCard" data-go="letter" disabled><span class="tag" id="lockTag">qulflangan</span><span class="ttl">Oxirgi sahifa</span><span class="sub" id="lockSub">Ikkita joyni ko‘rsang, yana bir narsa ochiladi.</span></button>
+    </div>
+  </section>
+
+  <!-- MOON -->
+  <section class="view" data-v="moon" hidden>
+    <p class="eyebrow">kuzatuv</p>
+    <h2>Bugungi oy</h2>
+    <div class="moonbox"><div id="moonSvg"></div><div class="stat" id="moonStat"></div></div>
+    <p class="small">Bu qiymatlar bugungi sana bo‘yicha taxminiy hisoblangan.</p>
+    <p class="calh">keyingi 7 kun</p>
+    <div class="cal" id="moonCal"></div>
+    <div class="fact" id="fact">Oy haqida bir narsa bilasanmi? Pastdagi tugmani bos.</div>
+    <div class="row">
+      <button class="btn main" id="factBtn">Oy haqida bilasanmi?</button>
+      <button class="btn" id="wishBtn">Orzu qil</button>
+      <button class="btn quiet" data-go="hub">Ortga qaytish</button>
+    </div>
+    <p class="small" id="wishNote" aria-live="polite" style="margin-top:1rem"></p>
+  </section>
+
+  <!-- QUIZ -->
+  <section class="view" data-v="quiz" hidden>
+    <p class="eyebrow">kichik test</p>
+    <h2 id="qTitle">Sizga nima yoqadi?</h2>
+    <div id="qBody"></div>
+  </section>
+
+  <!-- GAME -->
+  <section class="view" data-v="game" hidden>
+    <p class="eyebrow">o‘yin</p>
+    <h2>Yulduz tutish</h2>
+    <div class="hud"><span>Ochko: <b id="gScore">0</b></span><span>Vaqt: <b id="gTime">30</b></span><span>Rekord: <b id="gBest">0</b></span></div>
+    <div id="gwrap"><canvas id="g"></canvas></div>
+    <p class="small" id="gMsg" style="margin-top:.8rem" aria-live="polite">Boshlash tugmasini bos, keyin tushayotgan yulduzlarga tegin.</p>
+    <span class="sr" id="gLive" role="status" aria-live="polite"></span>
+    <div class="row"><button class="btn main" id="gStart">Boshlash</button><button class="btn quiet" data-go="hub">Ortga qaytish</button></div>
+  </section>
+
+  <!-- STAR -->
+  <section class="view" data-v="star" hidden>
+    <p class="eyebrow">jumboq</p>
+    <h2 id="sTitle">Yulduz turkumini chiz</h2>
+    <p class="small" id="sMsg" aria-live="polite">Miltillab turgan yulduzni bos. Ularni tartib bilan ulasang, turkum paydo bo‘ladi.</p>
+    <div class="cwrap"><canvas id="sc" tabindex="0" role="button" aria-label="Keyingi yulduzni ulash uchun Enter yoki bo‘sh joy tugmasini bos"></canvas></div>
+    <div class="row"><button class="btn" id="sReset">Qaytadan</button><button class="btn" id="sNext">Boshqa turkum</button><button class="btn quiet" data-go="hub">Osmonga qaytish</button></div>
+  </section>
+
+  <!-- WISHES -->
+  <section class="view" data-v="wishes" hidden>
+    <p class="eyebrow">sokin joy</p>
+    <h2>Orzular osmoni</h2>
+    <p class="lead">Orzu yoz, u yulduzga aylanadi. Orzu faqat shu sahifada qoladi: hech qayerga yuborilmaydi va saqlanmaydi. Sahifani yopsang, yulduzlar jim osmonga qaytadi.</p>
+    <form class="wishbox" id="wishForm" autocomplete="off">
+      <label class="small" for="wishIn" style="flex-basis:100%">Orzuing</label>
+      <input type="text" id="wishIn" maxlength="80" placeholder="Masalan: bir kuni dengizni ko‘rsam">
+      <button class="btn main" type="submit">Yulduzga aylantir</button>
+    </form>
+    <div id="wsky"><p class="small" id="wEmpty" style="position:absolute;inset:0;display:grid;place-items:center;margin:0;text-align:center;padding:0 20px">Osmon hozircha bo‘sh. Birinchi orzuni yoz.</p></div>
+    <p class="fact" id="wCap" style="margin-top:12px;min-height:3.4em" aria-live="polite">Yulduzni bossang, orzuni qayta o‘qiy olasan.</p>
+    <div class="row"><button class="btn quiet" data-go="hub">Ortga qaytish</button></div>
+  </section>
+
+  <!-- BIRTH -->
+  <section class="view" data-v="birth" hidden>
+    <p class="eyebrow">shaxsiy</p>
+    <h2>Tug‘ilgan kuningdagi oy</h2>
+    <p class="lead">Tug‘ilgan sanangni kirit, o‘sha kuni osmonda oy qanday ko‘ringanini ko‘rsataman. Sana hech qayerga yuborilmaydi va saqlanmaydi.</p>
+    <div class="datebox">
+      <label class="small" for="birthIn">Tug‘ilgan sana</label>
+      <input type="date" id="birthIn" min="1930-01-01">
+      <button class="btn main" id="birthBtn">Ko‘rsat</button>
+    </div>
+    <p class="small" id="birthErr" aria-live="polite"></p>
+    <div id="birthOut" hidden>
+      <div class="moonbox"><div id="birthSvg"></div><div class="stat" id="birthStat"></div></div>
+      <div class="fact" id="birthTxt"></div>
+      <p class="small" style="margin-top:1rem" id="birthNext"></p>
+    </div>
+    <div class="row"><button class="btn quiet" data-go="hub">Ortga qaytish</button></div>
+  </section>
+
+  <!-- STORY -->
+  <section class="view" data-v="story" hidden>
+    <p class="eyebrow">xotira sahifalari</p>
+    <h3 class="first">Xotira</h3>
+    <p>Ba’zan xotira suratga o‘xshaydi: umumiy manzara ravshan, chetlari esa asta-sekin yo‘qolib boradi. Man uning qayerdan kelishini, qaysi ko‘chadan yurishini eslayman-u, o‘sha paytda o‘zim nimalarni o‘ylaganimni aniq ayta olmayman.</p>
+    <p>Oxirgi marta uni uyimiz yonida ko‘rganman. O‘shanda oq ko‘ylakda edi, 2025-yil yozida. U o‘qishga tayyorlanayotgan vaqtlar edi. O‘sha uchrashuv oddiy bo‘lgandir, ammo xotiramda qolib ketdi.</p>
+    <p>Keyin uni yana ko‘rishni xohlagan paytlarim bo‘ldi. Ularning bozorda do‘koni borligini bilardim. Istasam, u yerga borishim mumkin edi. Lekin har doim ham bormadim. Ba’zan imkon topilmadi, ba’zan esa o‘zimni to‘xtatdim. Uni ko‘rishni xohlardim, ammo u meni ko‘rishini istarmidim yoki aksincha, ko‘rishidan cho‘chirmidim — bu savolga hamon aniq javobim yo‘q.</p>
+    <p>Ehtimol, men uchrashuvdan emas, o‘zimni qanday ko‘rsatishimdan qo‘rqardim. Uning orzusidagi inson boshqa bo‘lsa kerak deb o‘ylardim. Shuning uchun uni bezota qilishni istamasdim.</p>
+    <p>Man uning orzularini bilmasdim. Balki u ham oddiy, samimiy va hurmatli munosabatni istar. Balki umuman boshqa narsalarni qadrlaydi. Man bilmagan narsalarimning o‘rnini tasavvur bilan to‘ldirardim.</p>
+    <hr class="sep">
+    <h3>Oyga qarab</h3>
+    <p>Ba’zan osmondagi oyga qarayman. U hamon uzoqda. Man uni ko‘ra olaman, uning nuri qorong‘ilikni yengillashtiradi, ammo unga qo‘l uzatib yetolmayman.</p>
+    <p>Avvallari bu manga faqat yetib bo‘lmaslikni eslatardi. Endi esa boshqa ma’nosini ham ko‘raman: hamma narsaga egalik qilish shart emas. Ba’zi go‘zal narsalarni uzoqdan ko‘rib, ularning borligini tan olish mumkin.</p>
+    <p>Balki bir kun bu xotiralarni qayta o‘qib, bugungi o‘zimni tushunarman. Balki bu qissa man o‘ylaganimdan boshqa yakun topar. Hozircha bilmayman.</p>
+    <p>«Balki» — javob emas. U faqat bilmagan narsalarimiz borligini tan olishdir.</p>
+    <p>Mani uni yoqtiraman. Bu haqiqat. U mani yoqtiradimi — buni bilmayman. Bu ham haqiqat.</p>
+    <p>Endi shu ikki haqiqat orasida o‘zimni yo‘qotmasdan yashashni o‘rganishim kerak.</p>
+    <div class="row"><button class="btn quiet" data-go="hub">Ortga qaytish</button></div>
+  </section>
+
+  <!-- LETTER -->
+  <section class="view" data-v="letter" hidden>
+    <p class="eyebrow">242767 dan</p>
+    <h2>Uzoqdan tanish</h2>
+    <p>Sizni birinchi marta uyimiz oldida ko‘rganman. O'shanda opanglaga yordamga kelganding. Hovuzdan chelakda suv tashib yurarding. Oddiygina bir lahza edi, lekin negadir esimda qolib ketdi.</p>
+    <p>Bu taxminan 2021-yil atrofida edi, aniq eslay olmayman. Oradan ancha vaqt o‘tdi. Sizni yaxshi tanimayman, lekin ko‘rgan paytlarimni va kulishingni eslayman.</p>
+    <div class="pull">Ba’zi go‘zal narsalarni uzoqdan ko‘rib, ularning borligini tan olish mumkin.</div>
+    <p>Bu sahifa sendan hech narsa so‘ramaydi. Umid qilaman, ozgina bo‘lsa ham kulib qo‘yding. Shu man uchun yetarli. Javob shart emas.</p>
+    <p class="sign">— <button class="nm" type="button">242767</button></p>
+    <div class="row"><button class="btn quiet" data-go="hub">Ortga qaytish</button></div>
+  </section>
+</div>
+
+<script>
+(function(){
+  var reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;var skyK=1;
+  var views={};document.querySelectorAll("[data-v]").forEach(function(v){views[v.getAttribute("data-v")]=v});
+  var seen={},crumbs={hub:"kuzatuvxona",moon:"bugungi oy",quiz:"test",game:"o‘yin",birth:"tug‘ilgan kun",star:"yulduz turkumi",wishes:"orzular osmoni",letter:"oxirgi sahifa",story:"xotira sahifalari"};
+
+  var cur="hub";
+  try{JSON.parse(localStorage.getItem("seen242767")||"[]").forEach(function(k){if(crumbs[k]&&k!=="hub")seen[k]=true})}catch(_){}
+  try{history.replaceState({v:"hub"},"")}catch(_){}
+  function go(n,pop){
+    if(!pop&&n!==cur){try{history.pushState({v:n},"")}catch(_){}}
+    cur=n;
+    Object.keys(views).forEach(function(k){views[k].hidden=k!==n});
+    document.getElementById("crumb").textContent=crumbs[n];
+    if(n!=="hub"&&n!=="letter")seen[n]=true;
+    if(n==="letter")seen.letter=true;
+    try{localStorage.setItem("seen242767",JSON.stringify(Object.keys(seen)))}catch(_){}
+    if(n==="quiz")startQuiz();
+    if(n==="moon"){drawMoonView();drawCal()}
+    if(n!=="game")stopGame();
+    if(n!=="star")stopStar();
+    if(n==="star")startStar();
+    document.body.classList.toggle("letter-on",n==="letter"||n==="story");if(n==="letter"||n==="story")revealLetter(n);
+    refreshHub();
+    scrollTo({top:0,behavior:reduce?"auto":"smooth"});
+  }
+  function refreshHub(){
+    var cnt=Object.keys(seen).filter(function(k){return k!=="letter"}).length;
+    document.querySelectorAll(".card[data-go]").forEach(function(c){var k=c.getAttribute("data-go");c.classList.toggle("seen",!!seen[k])});
+    var lc=document.getElementById("letterCard");
+    if(cnt>=2){lc.disabled=false;document.getElementById("lockTag").textContent="ochildi";document.getElementById("lockSub").textContent="Bu yerda hech narsa so‘ralmaydi. Xohlasang o‘qi."}
+    else{lc.disabled=true;document.getElementById("lockTag").textContent="qulflangan";document.getElementById("lockSub").textContent="Yana "+(2-cnt)+" ta joyni ko‘rsang, bir narsa ochiladi."}
+  }
+  document.addEventListener("click",function(e){
+    var t=e.target.closest("[data-go]");if(!t||t.disabled)return;
+    var d=t.getAttribute("data-go");
+    if(d==="hub"&&cur!=="hub"&&history.state&&history.state.v===cur)history.back();else go(d);
+  });
+  addEventListener("popstate",function(e){
+    var v=e.state&&e.state.v;if(!v||!views[v])v="hub";
+    if(v==="letter"&&document.getElementById("letterCard").disabled)v="hub";
+    go(v,true);
+  });
+
+  /* ---------- Moon ---------- */
+  function moonSVG(p){
+    var k=Math.cos(2*Math.PI*p),rx=Math.abs(k)*50,wax=p<.5;
+    var outer=wax?1:0,inner=wax?(k>0?0:1):(k>0?1:0);
+    return '<svg viewBox="0 0 100 100" role="img" aria-label="Oy fazasi"><circle cx="50" cy="50" r="50" fill="#35244d"/><path d="M50 0A50 50 0 0 '+outer+' 50 100A'+rx.toFixed(2)+' 50 0 0 '+inner+' 50 0Z" fill="#f3ecd6"/></svg>';
+  }
+  function phaseNow(){
+    var syn=29.530588853,ref=Date.UTC(2000,0,6,18,14);
+    var d=(Date.now()-ref)/86400000,age=((d%syn)+syn)%syn;return {age:age,p:age/syn};
+  }
+  function phaseName(p){
+    if(p<.03||p>=.97)return "Yangi oy";
+    if(p<.22)return "O‘sib borayotgan hilol";
+    if(p<.28)return "Birinchi chorak";
+    if(p<.47)return "O‘sayotgan oy";
+    if(p<.53)return "To‘lin oy";
+    if(p<.72)return "Kamayotgan oy";
+    if(p<.78)return "Oxirgi chorak";
+    return "Kamayotgan hilol";
+  }
+  function drawMoonView(){
+    var m=phaseNow(),ill=Math.round((1-Math.cos(2*Math.PI*m.p))/2*100);
+    document.getElementById("moonSvg").innerHTML=moonSVG(m.p);
+    document.getElementById("moonStat").innerHTML="<b>"+phaseName(m.p)+"</b><br>Yoritilgan qismi: "+ill+"%<br>Oy yoshi: "+m.age.toFixed(1).replace(".",",")+" kun";
+  }
+  var facts=["Oy Yerdan har yili taxminan 3,8 santimetr uzoqlashadi.","Oyning doim bir tomoni Yerga qaragan. Orqa tomonini Yerdan hech qachon ko‘rib bo‘lmaydi.","Oy nuri Yerga taxminan 1,3 soniyada yetib keladi.","Oy yuzasidagi iz havosizligi uchun millionlab yil o‘chmay turadi.","Oyning to‘liq fazalar tsikli taxminan 29,5 kun davom etadi.","Oyda og‘irlik Yerdagining atigi oltidan biriga teng."];
+  var fi=-1;
+  document.getElementById("factBtn").addEventListener("click",function(){fi=(fi+1)%facts.length;document.getElementById("fact").textContent=facts[fi]});
+  var wishes=["Orzu osmonga uchdi. Hech kim ko‘rmadi, faqat oy.","Yulduz uni olib ketdi. Qolganini vaqt hal qiladi.","Orzu qilindi. Oy sir saqlaydi."];
+  document.getElementById("wishBtn").addEventListener("click",function(){
+    var w=document.getElementById("wish");w.classList.remove("go");void w.offsetWidth;w.classList.add("go");
+    document.getElementById("wishNote").textContent=wishes[Math.floor(Math.random()*wishes.length)];
+  });
+
+  /* ---------- Birth moon ---------- */
+  var months=["yanvar","fevral","mart","aprel","may","iyun","iyul","avgust","sentabr","oktabr","noyabr","dekabr"];
+  var birthTexts={
+    "Yangi oy":"Siz osmon eng sirli va sokin paytida tug‘ilgansan. Yangi oy har doim yangi boshlanishni anglatadi.",
+    "O‘sib borayotgan hilol":"Sen ingichka, lekin kundan-kunga yorqinlashayotgan oy ostida tug‘ilgansan. Nur endi boshlanayotgan edi.",
+    "Birinchi chorak":"Sen oyning yarmi yorug‘ bo‘lgan kuni tug‘ilgansan. Bu qat’iyat va harakat fasli.",
+    "O‘sayotgan oy":"Sizn oy to‘lishga intilayotgan paytda tug‘ilgansan. Osmon sekin yorishib borayotgan edi.",
+    "To‘lin oy":"Sen osmon eng yorqin bo‘lgan kechada tug‘ilgansan. To‘lin oy ostida tug‘ilganlar ko‘pincha chiroyli ertaklarga kiradi.",
+    "Kamayotgan oy":"Sen oy o‘z nurini sekin ulashayotgan paytda tug‘ilgansan. Bu xotirjam va mulohazali fasl.",
+    "Oxirgi chorak":"Sen oyning yarmi yana soyaga o‘tayotgan kuni tug‘ilgansan. Muvozanat paytida.",
+    "Kamayotgan hilol":"Sen tong oldidagi ingichka oy ostida tug‘ilgansan. Sokin va nozik faza."
+  };
+  function fmt(d){return d.getUTCDate()+"-"+months[d.getUTCMonth()]+", "+d.getUTCFullYear()}
+  (function(){
+    var inp=document.getElementById("birthIn");
+    var t=new Date();inp.max=t.getFullYear()+"-"+String(t.getMonth()+1).padStart(2,"0")+"-"+String(t.getDate()).padStart(2,"0");
+    function show(){
+      var err=document.getElementById("birthErr"),out=document.getElementById("birthOut");err.textContent="";
+      var m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(inp.value);
+      if(!m){out.hidden=true;err.textContent="Avval sanani tanla.";return}
+      var y=+m[1],mo=+m[2],d=+m[3],ms=Date.UTC(y,mo-1,d,12);
+      if(y<1930||ms>Date.now()){out.hidden=true;err.textContent="Bu sana mos kelmadi. Boshqa sanani sinab ko‘r.";return}
+      var syn=29.530588853,ref=Date.UTC(2000,0,6,18,14),age=(((ms-ref)/86400000)%syn+syn)%syn,p=age/syn;
+      var name=phaseName(p),ill=Math.round((1-Math.cos(2*Math.PI*p))/2*100);
+      document.getElementById("birthSvg").innerHTML=moonSVG(p);
+      document.getElementById("birthStat").innerHTML="<b>"+name+"</b><br>Sana: "+d+"-"+months[mo-1]+", "+y+"<br>Yoritilgan qismi: "+ill+"%<br>Oy yoshi: "+age.toFixed(1).replace(".",",")+" kun";
+      document.getElementById("birthTxt").textContent=birthTexts[name];
+      var n=Math.ceil((Date.now()-ms)/(syn*86400000)),nx=new Date(ms+n*syn*86400000);
+      document.getElementById("birthNext").textContent="Oy yana shu fazaga taxminan "+fmt(nx)+" kuni qaytadi. Hisob-kitob taxminiy va ko‘proq o‘yin uchun.";
+      out.hidden=false;
+    }
+    document.getElementById("birthBtn").addEventListener("click",show);
+    inp.addEventListener("keydown",function(e){if(e.key==="Enter")show()});
+  })();
+
+  /* ---------- Quiz ---------- */
+  var phases=[
+    {n:"Yangi oy",p:.04,t:"Sen sirli va chuqursan. Hamma ham seni birdan tanimaydi, lekin yaqinlashganlar uchun ichingda butun bir osmon bor. Sokinlik sening kuching."},
+    {n:"O‘sayotgan oy",p:.36,t:"Sen intiluvchan va umidga to‘lasan. Har kuni biroz yorqinroq bo‘lib borasan. Rejalaring ko‘p va ular amalga oshadi."},
+    {n:"To‘lin oy",p:.5,t:"Sen yorqin va jozibalisan. Qayerga kirsang, joy yorishadi. Odamlar yoningda o‘zini yaxshi his qiladi."},
+    {n:"Kamayotgan oy",p:.68,t:"Sen xotirjam va mulohazalisan. Ko‘p narsani sezasan, kam gapirasan. Sening sokin donoligingni qadrlashadi."}
+  ];
+  var qs=[
+    {q:"Dam olish kunining eng yaxshi boshlanishi qaysi?",o:[["Hech kim bezovta qilmaydigan sokin tong",0],["Yangi reja yoki yangi narsa boshlash",1],["Do‘stlar bilan kulgi va suhbat",2],["Sekin qahva yoki choy va eski qo‘shiqlar",3]]},
+    {q:"Kechasi qaysi ichimlik yoqadi?",o:[["Qora choy",0],["Yangi qaynatilgan qahva",1],["Shirin sovuq ichimlik",2],["Issiq shokolad",3]]},
+    {q:"Yangi shaharga borsang, birinchi nima qilasan?",o:[["Sokin ko‘cha va kichik qahvaxona qidiraman",0],["Xaritani ochib, ko‘p joyni rejalashtiraman",1],["Mahalliy odamlar bilan gaplashaman",2],["Tarixiy joy yoki eski mahalla ko‘raman",3]]},
+    {q:"Qaysi so‘z senga yaqinroq?",o:[["Sukunat",0],["Boshlanish",1],["Quvonch",2],["Xotira",3]]}
+  ];
+  var qi=0,sc=[0,0,0,0];
+  function startQuiz(){qi=0;sc=[0,0,0,0];document.getElementById("qTitle").textContent="Sen qaysi oy fazasisan?";renderQ()}
+  function renderQ(){
+    var b=document.getElementById("qBody");
+    if(qi>=qs.length){
+      var best=0;for(var i=1;i<4;i++)if(sc[i]>sc[best])best=i;
+      var r=phases[best];
+      document.getElementById("qTitle").textContent="Sen: "+r.n;
+      b.innerHTML='<div class="result">'+moonSVG(r.p)+'<div><p>'+r.t+'</p></div></div><div class="row"><button class="btn main" id="qAgain">Qaytadan</button><button class="btn quiet" data-go="hub">Osmonga qaytish</button></div>';
+      document.getElementById("qAgain").addEventListener("click",startQuiz);return;
+    }
+    var q=qs[qi],h='<div class="bar"><i style="width:'+(qi/qs.length*100)+'%"></i></div><p class="lead">'+q.q+'</p><div class="opts">';
+    q.o.forEach(function(o,i){h+='<button class="opt" data-i="'+i+'">'+o[0]+'</button>'});
+    b.innerHTML=h+'</div>';
+    b.querySelectorAll(".opt").forEach(function(btn){btn.addEventListener("click",function(){sc[q.o[+btn.dataset.i][1]]++;qi++;renderQ()})});
+  }
+
+  /* ---------- Game ---------- */
+  var gc=document.getElementById("g"),gx=gc.getContext("2d"),G=null,raf=0,best=0;
+  try{best=+localStorage.getItem("bestStars")||0}catch(_){}
+  document.getElementById("gBest").textContent=best;
+  function fit(){var d=Math.min(devicePixelRatio||1,2),w=gc.clientWidth,h=gc.clientHeight;gc.width=w*d;gc.height=h*d;gx.setTransform(d,0,0,d,0,0)}
+  function stopGame(){if(G){G.run=false}cancelAnimationFrame(raf)}
+  function startGame(){
+    fit();var w=gc.clientWidth,h=gc.clientHeight;
+    G={run:true,t0:performance.now(),last:performance.now(),spawn:0,score:0,stars:[],fx:[],combo:0,mult:1,lastHit:0,flash:0,w:w,h:h};
+    document.getElementById("gScore").textContent="0";document.getElementById("gBest").classList.remove("rec");document.getElementById("gLive").textContent="";document.getElementById("gMsg").textContent="Yulduzlarga tegin!";
+    document.getElementById("gwrap").classList.add("run");
+    document.getElementById("gStart").hidden=true;loop(performance.now());
+  }
+  function loop(now){
+    if(!G||!G.run)return;
+    var dt=Math.min(.05,(now-G.last)/1000);G.last=now;
+    var el=(now-G.t0)/1000,left=Math.max(0,30-el);
+    document.getElementById("gTime").textContent=Math.ceil(left);
+    G.spawn-=dt;
+    if(G.spawn<=0){G.spawn=Math.max(.32,.75-el*.014);
+      var pink=Math.random()<.16;
+      G.stars.push({x:24+Math.random()*(G.w-48),y:-20,v:70+Math.random()*60+el*3,r:pink?15:13,pink:pink,ph:Math.random()*6})}
+    gx.clearRect(0,0,G.w,G.h);
+    G.stars=G.stars.filter(function(s){s.y+=s.v*dt;if(s.y>G.h+30)return false;drawStar(s,now);return true});
+    G.fx=G.fx.filter(function(f){f.l-=dt;if(f.l<=0)return false;f.x+=f.vx*dt;f.y+=f.vy*dt;gx.globalAlpha=Math.max(0,f.l*2);gx.fillStyle=f.c;gx.beginPath();gx.arc(f.x,f.y,2,0,6.28);gx.fill();gx.globalAlpha=1;return true});
+    if(G.combo&&now-G.lastHit>2200){G.combo=0;G.mult=1}
+    if(G.flash>0){gx.save();gx.globalAlpha=Math.min(1,G.flash);gx.strokeStyle="#e57fb8";gx.lineWidth=8;gx.shadowColor="#e57fb8";gx.shadowBlur=28;gx.strokeRect(0,0,G.w,G.h);gx.restore();G.flash-=dt*1.6}
+    if(G.mult>1){gx.save();gx.globalAlpha=.9;gx.fillStyle=G.mult>2?"#e57fb8":"#f3ecd6";gx.shadowColor=gx.fillStyle;gx.shadowBlur=12;gx.font="22px 'DM Mono',monospace";gx.textAlign="left";gx.fillText("x"+G.mult,14,34);gx.restore()}
+    if(left<=0){endGame();return}
+    raf=requestAnimationFrame(loop);
+  }
+  function drawStar(s,t){
+    var c=s.pink?"#e57fb8":"#f3ecd6",r=s.r*(1+.08*Math.sin(t/220+s.ph));
+    var g=gx.createRadialGradient(s.x,s.y,0,s.x,s.y,r*2.2);g.addColorStop(0,c+"cc");g.addColorStop(1,c+"00");
+    gx.fillStyle=g;gx.beginPath();gx.arc(s.x,s.y,r*2.2,0,6.28);gx.fill();
+    gx.fillStyle=c;gx.beginPath();
+    for(var i=0;i<8;i++){var a=i*Math.PI/4-Math.PI/2,rr=i%2?r*.38:r;gx.lineTo(s.x+Math.cos(a)*rr,s.y+Math.sin(a)*rr)}
+    gx.closePath();gx.fill();
+  }
+  function burst(x,y,c){for(var i=0;i<10;i++){var a=Math.random()*6.28,v=40+Math.random()*90;G.fx.push({x:x,y:y,vx:Math.cos(a)*v,vy:Math.sin(a)*v,l:.5,c:c})}}
+  gc.addEventListener("pointerdown",function(e){
+    if(!G||!G.run)return;
+    var r=gc.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top,hit=false;
+    for(var i=G.stars.length-1;i>=0;i--){var s=G.stars[i];
+      if(Math.hypot(s.x-x,s.y-y)<s.r+18){
+        G.combo++;G.mult=G.combo>=7?3:G.combo>=3?2:1;G.lastHit=performance.now();
+        G.score+=(s.pink?3:1)*G.mult;burst(s.x,s.y,s.pink?"#e57fb8":"#f3ecd6");
+        if(s.pink){G.flash=.9;buzz(25);tink(1318.5,.14)}else{buzz(12);tink(pent[Math.min(G.combo,5)],.1)}
+        G.stars.splice(i,1);document.getElementById("gScore").textContent=G.score;hit=true;break}}
+    if(!hit){G.combo=0;G.mult=1}
+  });
+  function endGame(){
+    G.run=false;gx.clearRect(0,0,G.w,G.h);document.getElementById("gwrap").classList.remove("run");
+    var rec=G.score>best&&G.score>0;
+    if(G.score>best){best=G.score;try{localStorage.setItem("bestStars",best)}catch(_){}}
+    document.getElementById("gBest").textContent=best;
+    document.getElementById("gBest").classList.toggle("rec",rec);document.getElementById("gLive").textContent=rec?"Yangi rekord!":"";
+    var s=G.score,m=s>=30?"Osmonni to‘ldirding. Zo‘r natija!":s>=15?"Juda yaxshi. Yulduzlar seni yaxshi ko‘radi.":s>=6?"Yaxshi boshlanish. Yana bir urinib ko‘r.":"Yulduzlar tez ekan. Yana bir bor urinib ko‘r.";
+    document.getElementById("gMsg").textContent="Vaqt tugadi. Natija: "+s+" ochko. "+m;
+    var b=document.getElementById("gStart");b.textContent="Yana o‘ynash";b.hidden=false;
+  }
+  document.getElementById("gStart").addEventListener("click",startGame);
+  addEventListener("resize",function(){if(G&&G.run){fit();G.w=gc.clientWidth;G.h=gc.clientHeight}});
+
+  /* ---------- Constellations ---------- */
+  var cons=[
+    {n:"Katta Ayiq",pts:[["Dubhe",.20,.30],["Merak",.18,.62],["Phecda",.44,.70],["Megrez",.46,.40],["Alioth",.62,.34],["Mizar",.76,.26],["Alkaid",.92,.40]],close:[3,0],
+     fact:"Bu Katta Ayiq turkumining eng mashhur qismi. Dubhe va Merak yulduzlarini bir chiziq bilan davom ettirsang, Shimoliy yulduzga yetasan."},
+    {n:"Kassiopeya",pts:[["Caph",.10,.34],["Schedar",.30,.68],["Gamma",.50,.38],["Ruchbah",.70,.68],["Segin",.90,.30]],close:null,
+     fact:"Kassiopeya ingliz harfi W ga o‘xshaydi. Shimoliy osmonda uni deyarli butun yil ko‘rish mumkin."},
+    {n:"Ch",secret:true,pts:[["",.40,.30],["",.27,.20],["",.14,.34],["",.12,.58],["",.24,.78],["",.40,.72],["",.58,.14,-1],["",.58,.50],["",.58,.84],["",.70,.40,7],["",.84,.50],["",.84,.84]],close:null,
+     fact:"Bu turkum hech qaysi xaritada yo‘q edi. U faqat shu osmonda bor va faqat sen uchun chizildi."},
+    {n:"Orion",pts:[["Betelgeuse",.20,.14],["Alnitak",.30,.56],["Alnilam",.50,.55],["Mintaka",.70,.54],["Bellatrix",.76,.16],["Rigel",.76,.90,3],["Saiph",.22,.90,1]],close:[0,4],
+     fact:"Orion qishki osmonning eng mashhur turkumlaridan biri. Kamaridagi uchta yulduz deyarli bir chiziqda turadi, qizg‘ish Betelgeuse esa uning yelkasida porlaydi."},
+    {n:"Oqqush",pts:[["Deneb",.50,.10],["Sadr",.50,.42],["Albireo",.50,.90],["Gienah",.16,.30,1],["Fawaris",.84,.52,1]],close:null,
+     fact:"Oqqush turkumining yorqin yulduzlari katta xoch hosil qiladi, shuning uchun uni «Shimoliy xoch» ham deyishadi. Albireo yulduzi teleskopda ikki rangli juftlik bo‘lib ko‘rinadi."},
+    {n:"Chayon",pts:[["Graffias",.30,.10],["Dschubba",.24,.28],["Antares",.36,.46],["Larawag",.46,.58],["Mu",.52,.70],["Sargas",.54,.82],["Girtab",.64,.88],["Shaula",.80,.93],["Lesath",.84,.68]],close:null,
+     fact:"Chayon turkumining yuragida qizg‘ish Antares turadi. Uning nomi «Mars raqibi» degan ma’noni bildiradi, chunki rangi Marsga o‘xshaydi."}
+  ];
+  var scv=document.getElementById("sc"),sx=scv.getContext("2d"),ci2=0,fin={},unlocked=false,step=0,sraf=0,sOn=false,bg=[],segT=0;
+  function sFit(){var d=Math.min(devicePixelRatio||1,2),w=scv.clientWidth,h=scv.clientHeight;if(!w)return;scv.width=w*d;scv.height=h*d;sx.setTransform(d,0,0,d,0,0);
+    bg=[];for(var i=0;i<60;i++)bg.push({x:Math.random()*w,y:Math.random()*h,r:Math.random()*1.1+.2})}
+  function sPos(p){var w=scv.clientWidth,h=scv.clientHeight;return {x:28+p[1]*(w-56),y:34+p[2]*(h-68)}}
+  function sReset(){step=0;document.getElementById("sTitle").textContent="Yulduz turkumini chiz";document.getElementById("sMsg").textContent="Miltillab turgan yulduzni bos. Ularni tartib bilan ulasang, "+cons[ci2].n+" turkumi paydo bo‘ladi."}
+  function startStar(){sFit();sReset();sOn=true;cancelAnimationFrame(sraf);sLoop(0)}
+  function stopStar(){sOn=false;cancelAnimationFrame(sraf)}
+  function sLoop(t){
+    if(!sOn)return;
+    var w=scv.clientWidth,h=scv.clientHeight,C=cons[ci2],done=step>=C.pts.length;
+    sx.clearRect(0,0,w,h);
+    sx.fillStyle="rgba(236,233,242,.35)";bg.forEach(function(b){sx.beginPath();sx.arc(b.x,b.y,b.r,0,6.28);sx.fill()});
+    sx.lineWidth=2;sx.lineCap="round";sx.strokeStyle=done?"#e57fb8":"rgba(243,236,214,.8)";
+    if(done)sx.shadowColor="#e57fb8",sx.shadowBlur=10;else{sx.shadowColor="#f3ecd6";sx.shadowBlur=8}
+    var kk=Math.min(1,(performance.now()-segT)/340);
+    sx.beginPath();for(var i=1;i<Math.min(step,C.pts.length);i++){var fr=C.pts[i][3]===undefined?i-1:C.pts[i][3];if(fr<0)continue;var p0=sPos(C.pts[fr]),p=sPos(C.pts[i]);if(i===step-1&&kk<1)p={x:p0.x+(p.x-p0.x)*kk,y:p0.y+(p.y-p0.y)*kk};sx.moveTo(p0.x,p0.y);sx.lineTo(p.x,p.y)}sx.stroke();
+    if(done&&C.close&&kk>=1){var a=sPos(C.pts[C.close[0]]),b=sPos(C.pts[C.close[1]]);sx.beginPath();sx.moveTo(a.x,a.y);sx.lineTo(b.x,b.y);sx.stroke()}
+    sx.shadowBlur=0;
+    C.pts.forEach(function(q,i){
+      var p=sPos(q),lit=i<step,tgt=i===step;
+      sx.fillStyle=lit?"#f3ecd6":"rgba(236,233,242,.55)";
+      sx.shadowColor="#f3ecd6";sx.shadowBlur=lit?14:4;
+      sx.beginPath();sx.arc(p.x,p.y,lit?5:3.5,0,6.28);sx.fill();sx.shadowBlur=0;
+      if(tgt&&!done){var k=(Math.sin(t/260)+1)/2;sx.strokeStyle="rgba(229,127,184,"+(.35+.5*k).toFixed(2)+")";sx.lineWidth=2;sx.beginPath();sx.arc(p.x,p.y,10+8*k,0,6.28);sx.stroke()}
+      if(lit&&q[0]){sx.fillStyle="rgba(236,233,242,.75)";sx.font="12px 'DM Mono',monospace";sx.textAlign=p.x>w-70?"right":"left";sx.fillText(q[0],p.x+(p.x>w-70?-10:10),p.y-10)}
+    });
+    sraf=requestAnimationFrame(sLoop);
+  }
+  scv.addEventListener("pointerdown",function(e){
+    var C=cons[ci2];if(step>=C.pts.length)return;
+    var r=scv.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top,p=sPos(C.pts[step]);
+    if(Math.hypot(p.x-x,p.y-y)<30){
+      step++;segT=performance.now();buzz(12);tink(pent[step%pent.length],.12);
+      if(step>=C.pts.length){
+        fin[ci2]=true;chime(!!C.secret);buzz([20,40,30]);var extra="";
+        if(!unlocked&&fin[0]&&fin[1]){unlocked=true;extra=" Osmonda yana yangi turkum paydo bo‘ldi. «Boshqa turkum» tugmasini bos."}
+        document.getElementById("sTitle").textContent=C.n;document.getElementById("sMsg").textContent=C.fact+extra}
+      else document.getElementById("sMsg").textContent=step+" / "+C.pts.length+". Keyingi miltillagan yulduzni bos."
+    }else document.getElementById("sMsg").textContent="Pushti halqa bilan miltillagan yulduzni bos."
+  });
+  scv.addEventListener("keydown",function(e){
+    if(e.key!=="Enter"&&e.key!==" "&&e.key!=="ArrowRight")return;
+    e.preventDefault();var C=cons[ci2];if(step>=C.pts.length)return;
+    var r=scv.getBoundingClientRect(),p=sPos(C.pts[step]);
+    scv.dispatchEvent(new PointerEvent("pointerdown",{clientX:r.left+p.x,clientY:r.top+p.y,bubbles:true}));
+  });
+  document.getElementById("sReset").addEventListener("click",sReset);
+  document.getElementById("sNext").addEventListener("click",function(){do{ci2=(ci2+1)%cons.length}while(cons[ci2].secret&&!unlocked);sReset()});
+  addEventListener("resize",function(){if(sOn)sFit()});
+
+  /* ---------- Wishes ---------- */
+  var wsky=document.getElementById("wsky"),wIn=document.getElementById("wishIn"),wCap=document.getElementById("wCap"),wEmpty=document.getElementById("wEmpty"),wn=0;
+  document.getElementById("wishForm").addEventListener("submit",function(e){
+    e.preventDefault();var v=wIn.value.trim();if(!v)return;
+    var b=document.createElement("button");b.type="button";b.className="ws"+(Math.random()<.2?" pk":"");
+    b.style.left=(10+Math.random()*80)+"%";b.style.top=(12+Math.random()*72)+"%";b.setAttribute("aria-label","Orzu yulduzi");
+    b.addEventListener("click",function(){wCap.textContent="«"+v+"»"});
+    wsky.appendChild(b);wEmpty.hidden=true;wn++;wIn.value="";
+    wCap.textContent="Orzuing osmonga uchdi. Yulduzni bossang, uni qayta o‘qiy olasan.";
+  });
+
+  /* ---------- Ambient sound (starts only on tap) ---------- */
+  var ac=null,master=null,pad=[],chordT=0,bellT=0,musicOn=false,chIdx=0;
+  var chords=[[110,164.81,220,329.63],[87.31,130.81,174.61,261.63],[130.81,196,261.63,329.63],[98,146.83,196,293.66]];
+  var pent=[440,523.25,587.33,659.25,783.99,880];
+  function bell(){
+    if(!musicOn||!ac)return;
+    var t=ac.currentTime,f=pent[Math.floor(Math.random()*pent.length)],o=ac.createOscillator(),g=ac.createGain();
+    o.type="sine";o.frequency.value=f;g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.16,t+.03);g.gain.exponentialRampToValueAtTime(.0001,t+3.4);
+    o.connect(g);g.connect(master);o.start(t);o.stop(t+3.6);
+    bellT=setTimeout(bell,2600+Math.random()*4200);
+  }
+  function music(on){
+    var btn=document.getElementById("musicBtn");
+    try{
+      if(on){
+        if(!ac){
+          var AC=window.AudioContext||window.webkitAudioContext;ac=new AC();master=ac.createGain();master.gain.value=0;
+          var lp=ac.createBiquadFilter();lp.type="lowpass";lp.frequency.value=1100;master.connect(lp);lp.connect(ac.destination);
+          for(var i=0;i<4;i++){var o=ac.createOscillator(),g=ac.createGain();o.type=i%2?"triangle":"sine";o.frequency.value=chords[0][i];o.detune.value=(i-1.5)*5;g.gain.value=.2;o.connect(g);g.connect(master);o.start();pad.push(o)}
+        }
+        ac.resume();master.gain.cancelScheduledValues(ac.currentTime);master.gain.setTargetAtTime(.3,ac.currentTime,1.6);
+        musicOn=true;clearInterval(chordT);clearTimeout(bellT);
+        chordT=setInterval(function(){chIdx=(chIdx+1)%chords.length;pad.forEach(function(o,i){o.frequency.setTargetAtTime(chords[chIdx][i],ac.currentTime,2.6)})},9000);
+        bellT=setTimeout(bell,1800);
+      }else if(ac){
+        musicOn=false;clearInterval(chordT);clearTimeout(bellT);master.gain.cancelScheduledValues(ac.currentTime);master.gain.setTargetAtTime(0,ac.currentTime,.4);
+        setTimeout(function(){if(!musicOn&&ac)ac.suspend()},1800);
+      }
+      btn.setAttribute("aria-pressed",on?"true":"false");btn.textContent=on?"Musiqa: yoqiq":"Musiqa: o‘chiq";
+    }catch(_){btn.textContent="Musiqa ishlamadi"}
+  }
+  document.getElementById("musicBtn").addEventListener("click",function(){music(!musicOn)});
+  var musicPaused=false;
+  document.addEventListener("visibilitychange",function(){
+    if(document.hidden){if(musicOn){musicPaused=true;music(false)}}
+    else if(musicPaused){musicPaused=false;music(true)}
+  });
+
+  /* ---------- Name reveal ---------- */
+  var nmOn=false;
+  document.addEventListener("click",function(e){
+    if(!e.target.closest(".nm"))return;
+    nmOn=!nmOn;document.querySelectorAll(".nm").forEach(function(n){n.textContent=nmOn?"Ch2767":"242767"});
+    var hint=document.getElementById("nmHint");if(hint)hint.hidden=true;
+  });
+
+  /* ---------- Starfield ---------- */
+  var c=document.getElementById("sky"),x=c.getContext("2d"),st=[];
+  function size(){c.width=innerWidth;c.height=innerHeight;var n=Math.round(innerWidth*innerHeight/6500);st=[];petalsInit();
+    for(var i=0;i<n;i++)st.push({x:Math.random()*c.width,y:Math.random()*c.height,r:Math.random()*1.2+.2,p:Math.random()*6.28,s:Math.random()*.02+.005})}
+  var lastF=0;
+  function draw(t){
+    if(!reduce&&(document.hidden||t-lastF<30)){requestAnimationFrame(draw);return}
+    lastF=t;x.clearRect(0,0,c.width,c.height);
+    st.forEach(function(s){var a=.3+.5*Math.abs(Math.sin(s.p+(reduce?0:t*s.s*.06)));x.fillStyle="rgba(236,233,242,"+(a*skyK).toFixed(2)+")";x.beginPath();x.arc(s.x,s.y,s.r,0,6.28);x.fill()});
+    petalsDraw(t);if(!reduce)requestAnimationFrame(draw)}
+  /* ---------- Gul barglari ---------- */
+  var petalCols=["#f2b5d4","#e99ccb","#d57ab8","#e57fb8","#f7d3e4"],pe=[],pT=0,pW=0;
+  function petalsInit(){
+    if(pe.length&&Math.abs(c.width-pW)<40)return;
+    pW=c.width;
+    var cnt=Math.max(16,Math.min(46,Math.round(innerWidth*innerHeight/14000)));pe=[];
+    for(var i=0;i<cnt;i++)pe.push({x:Math.random()*c.width,y:Math.random()*c.height,r:3.5+Math.random()*4,vy:16+Math.random()*26,sw:Math.random()*6.28,sa:10+Math.random()*22,rot:Math.random()*6.28,vr:(Math.random()-.5)*1.4,c:petalCols[Math.floor(Math.random()*petalCols.length)]});
+  }
+  function petalsDraw(t){
+    var dt=Math.min(.05,(t-pT)/1000);if(!(dt>0))dt=0;pT=t;
+    var n=document.body.classList.contains("letter-on")?pe.length:Math.round(pe.length*.55);
+    for(var i=0;i<n;i++){
+      var p=pe[i];
+      if(!reduce){p.y+=p.vy*dt;p.sw+=dt*1.1;p.rot+=p.vr*dt;if(p.y>c.height+10){p.y=-10;p.x=Math.random()*c.width}}
+      x.save();x.translate(p.x+Math.sin(p.sw)*p.sa,p.y);x.rotate(p.rot);x.scale(.55+.45*Math.cos(p.sw*1.6),1);
+      x.globalAlpha=.75;x.fillStyle=p.c;x.beginPath();
+      x.moveTo(0,-p.r);x.bezierCurveTo(p.r*.95,-p.r*.5,p.r*.7,p.r*.8,0,p.r);x.bezierCurveTo(-p.r*.7,p.r*.8,-p.r*.95,-p.r*.5,0,-p.r);
+      x.fill();x.restore();
+    }
+  }
+  size();addEventListener("resize",function(){size();if(reduce)draw(0)});draw(0);
+  /* ---------- Sezgi: tebranish va yumshoq tovush ---------- */
+  function buzz(p){try{if(navigator.vibrate)navigator.vibrate(p)}catch(_){}}
+  function tink(f,v){
+    if(!musicOn||!ac)return;
+    var t=ac.currentTime,o=ac.createOscillator(),g=ac.createGain();
+    o.type="sine";o.frequency.value=f;g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(v||.12,t+.01);g.gain.exponentialRampToValueAtTime(.0001,t+.55);
+    o.connect(g);g.connect(master);o.start(t);o.stop(t+.6);
+  }
+  function chime(big){
+    var n=big?[523.25,659.25,783.99,1046.5]:[523.25,659.25,783.99];
+    n.forEach(function(f,i){setTimeout(function(){tink(f,.1)},i*130)});
+  }
+
+  /* ---------- Oy kalendari (keyingi 7 kun) ---------- */
+  function phaseAt(ms){var syn=29.530588853,ref=Date.UTC(2000,0,6,18,14),age=(((ms-ref)/86400000)%syn+syn)%syn;return age/syn}
+  function drawCal(){
+    var el=document.getElementById("moonCal"),h="",now=Date.now();
+    for(var i=0;i<7;i++){var t=now+i*86400000,p=phaseAt(t);
+      h+='<div'+(i?'':' class="today"')+' title="'+phaseName(p)+'">'+moonSVG(p)+new Date(t).getDate()+'</div>'}
+    el.innerHTML=h;
+  }
+
+  /* ---------- Uchar yulduz ---------- */
+  function spark(x,y){
+    for(var i=0;i<10;i++){
+      var d=document.createElement("span"),a=Math.random()*6.28,r=24+Math.random()*34;
+      d.className="sp";d.style.left=x+"px";d.style.top=y+"px";
+      d.style.setProperty("--dx",Math.cos(a)*r+"px");d.style.setProperty("--dy",Math.sin(a)*r+"px");
+      if(i%3===0)d.style.background="#e57fb8";
+      document.body.appendChild(d);
+      (function(n){setTimeout(function(){n.remove()},800)})(d);
+    }
+  }
+  function shoot(){
+    var quiet=!views.game.hidden||!views.star.hidden||!views.letter.hidden||!views.story.hidden;
+    if(!document.hidden&&!quiet){
+      var W=innerWidth,H=innerHeight,fl=Math.random()<.5,x0=fl?-60:W+60,x1=fl?W+60:-60,y0=H*(.06+Math.random()*.3),y1=y0+H*(.22+Math.random()*.2),
+          b=document.createElement("button");
+      b.type="button";b.className="shoot";b.tabIndex=-1;b.setAttribute("aria-hidden","true");
+      b.style.setProperty("--x0",x0+"px");b.style.setProperty("--y0",y0+"px");b.style.setProperty("--x1",x1+"px");b.style.setProperty("--y1",y1+"px");
+      b.style.setProperty("--a",(Math.atan2(y1-y0,x1-x0)*180/Math.PI)+"deg");
+      b.addEventListener("animationend",function(){b.remove()});
+      b.addEventListener("click",function(){var r=b.getBoundingClientRect();spark(r.left+r.width/2,r.top+r.height/2);tink(1318.5,.14);buzz(12);b.remove()});
+      document.body.appendChild(b);
+    }
+    setTimeout(shoot,26000+Math.random()*34000);
+  }
+  if(!reduce)setTimeout(shoot,8000+Math.random()*8000);
+
+  /* ---------- Oxirgi sahifa: sekin ochilish ---------- */
+  var io=null;
+  function revealLetter(name){
+    var lv=views[name||"letter"],els=[].slice.call(lv.children);
+    document.getElementById("bigMoon").innerHTML=moonSVG(phaseNow().p);
+    if(io){io.disconnect();io=null}
+    els.forEach(function(e){e.style.transition="none";e.classList.add("rv");e.classList.remove("in");e.style.transitionDelay=""});
+    void lv.offsetWidth;
+    els.forEach(function(e){e.style.transition=""});
+    if(reduce||!("IntersectionObserver" in window)){els.forEach(function(e){e.classList.add("in")});return}
+    var batch=0,last=0;
+    io=new IntersectionObserver(function(list){
+      list.forEach(function(en){
+        if(!en.isIntersecting)return;
+        var t=performance.now();if(t-last>500)batch=0;last=t;
+        en.target.style.transitionDelay=(batch*.5)+"s";batch++;
+        en.target.classList.add("in");io.unobserve(en.target);
+      });
+    },{threshold:.3,rootMargin:"0px 0px -6% 0px"});
+    els.forEach(function(e){io.observe(e)});
+  }
+
+  /* ---------- Osmon rangi (kun vaqtiga qarab) ---------- */
+  var skyStops=[[0,[21,13,34],[42,23,64],0],[5,[28,17,46],[70,40,86],.15],[7,[34,24,60],[76,54,108],.6],[12,[38,28,68],[74,56,110],1],[17,[36,24,62],[84,50,100],.8],[19,[30,18,48],[90,48,88],.4],[21,[22,14,38],[46,28,70],.1],[24,[21,13,34],[42,23,64],0]];
+  function mixc(a,b,k){return a.map(function(v,i){return Math.round(v+(b[i]-v)*k)})}
+  function hex(c){return "#"+c.map(function(v){return("0"+v.toString(16)).slice(-2)}).join("")}
+  function applySky(){
+    var d=new Date(),h=d.getHours()+d.getMinutes()/60,i=0;
+    while(i<skyStops.length-2&&h>=skyStops[i+1][0])i++;
+    var a=skyStops[i],b=skyStops[i+1],k=(h-a[0])/(b[0]-a[0]),n=mixc(a[1],b[1],k),n2=mixc(a[2],b[2],k);
+    var rs=document.documentElement.style;
+    rs.setProperty("--night",hex(n));rs.setProperty("--night-2",hex(n2));
+    skyK=1-.5*(a[3]+(b[3]-a[3])*k);
+    var tc=document.querySelector('meta[name="theme-color"]');if(tc)tc.setAttribute("content",hex(n));
+    if(reduce)draw(0);
+  }
+  applySky();setInterval(applySky,300000);
+  document.addEventListener("visibilitychange",function(){if(!document.hidden)applySky()});
+
+  /* ---------- Gulli shox ---------- */
+  var bW=0;
+  function drawBough(){
+    var cv=document.getElementById("bough"),dpr=Math.min(devicePixelRatio||1,2),W=innerWidth,H=Math.round(innerHeight*.42);
+    bW=W;cv.width=Math.round(W*dpr);cv.height=Math.round(H*dpr);
+    var g=cv.getContext("2d");g.setTransform(dpr,0,0,dpr,0,0);g.clearRect(0,0,W,H);
+    var seed=242767;
+    function rnd(){seed|=0;seed=seed+0x6D2B79F5|0;var t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}
+    var cols=["#b8579f","#d57ab8","#e99ccb","#9a4a9c","#f2b5d4"];
+    function bloom(bx,by,r){
+      g.save();g.translate(bx,by);g.rotate(rnd()*6.28);g.fillStyle=cols[Math.floor(rnd()*cols.length)];
+      for(var i=0;i<5;i++){g.rotate(1.2566);g.beginPath();g.ellipse(0,-r*.62,r*.42,r*.7,0,0,6.283);g.fill()}
+      g.fillStyle="#f3d9a8";g.beginPath();g.arc(0,0,r*.16,0,6.283);g.fill();g.restore();
+    }
+    function branch(x0,y0,ang,len,wd,depth){
+      if(depth>6||len<9)return;
+      var a2=ang+(rnd()-.5)*.5,x2=x0+Math.cos(a2)*len,y2=y0+Math.sin(a2)*len,
+          cx=x0+Math.cos(ang)*len*.5+(rnd()-.5)*len*.3,cy=y0+Math.sin(ang)*len*.5+(rnd()-.5)*len*.3;
+      g.strokeStyle="#3a2631";g.lineWidth=wd;g.lineCap="round";g.beginPath();g.moveTo(x0,y0);g.quadraticCurveTo(cx,cy,x2,y2);g.stroke();
+      if(depth>=1){
+        var n=Math.round(len/4.5)+(depth>=4?5:0);
+        for(var i=0;i<n;i++){var t=rnd(),u=1-t,bx=u*u*x0+2*u*t*cx+t*t*x2,by=u*u*y0+2*u*t*cy+t*t*y2;bloom(bx+(rnd()-.5)*10,by+(rnd()-.5)*10,2.2+rnd()*3)}
+      }
+      var k=2+(rnd()<.5?1:0);
+      for(var j=0;j<k;j++)branch(x2,y2,ang+(rnd()-.5)*1.5,len*(.62+rnd()*.15),wd*.66,depth+1);
+    }
+    var L=Math.min(W*.34,H);
+    branch(-12,-12,1.05+rnd()*.25,L*.62,Math.max(5,L*.045),0);
+    g.save();g.translate(W,0);g.scale(-1,1);
+    branch(-12,-12,1.1+rnd()*.25,L*.55,Math.max(5,L*.04),0);
+    g.restore();
+  }
+  drawBough();
+  addEventListener("resize",function(){if(Math.abs(innerWidth-bW)>40)drawBough()});
+
+  /* ---------- Oflayn ishlash (PWA) ---------- */
+  if("serviceWorker" in navigator&&/^https?:/.test(location.protocol)){
+    addEventListener("load",function(){navigator.serviceWorker.register("/sw.js",{updateViaCache:"none"}).then(function(r){r.update()}).catch(function(){})});
+  }
+
+  (function(){var m=phaseNow();document.getElementById("hubMoon").innerHTML=moonSVG(m.p);document.getElementById("hubEyebrow").textContent="sirli taklif · bugun: "+phaseName(m.p).toLowerCase()})();
+  refreshHub();
+})();
+</script>
+
+</body></html>
